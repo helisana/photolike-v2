@@ -1,0 +1,26 @@
+<resources>
+  <string name="app_name">Photolike 2</string>
+  <string name="title_activity_login">LoginActivity</string>
+  <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+  <string name="hello_world">Hello Square World!</string>
+
+
+  <!-- Login -->
+  <string name="login_titulo">Login</string>
+
+  <string name="login_btn_entrar">Entrar</string>
+
+  <string name="login_dialog_erro_titulo">Dados de login inválidos</string>
+  <string name="login_dialog_erro_mensagem">Tente novamente</string>
+  <string name="login_dialog_erro_btn">Fechar</string>
+
+
+  <!-- Novo Post -->
+  <string name="novo_post_titulo">Novo Post</string>
+  <string name="novo_post_hint_legenda">Digite aqui sua legenda...</string>
+  <string name="novo_post_btn_publicar">Publicar</string>
+
+</resources>

@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "543072965012",
+    "project_id": "photolike-90e07",
+    "storage_bucket": "photolike-90e07.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:543072965012:android:96c5dfa818b7b69d29ff81",
+        "android_client_info": {
+          "package_name": "com.ddm.photolike"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "543072965012-th8ol7v6dovpvhspshv34v50n4gkgtpm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUZre9IgediCyC5OgnyK9fK8fpy7Ay57E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "543072965012-th8ol7v6dovpvhspshv34v50n4gkgtpm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:543072965012:android:f871b077ac04966029ff81",
+        "android_client_info": {
+          "package_name": "com.ddm.photolike2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "543072965012-th8ol7v6dovpvhspshv34v50n4gkgtpm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUZre9IgediCyC5OgnyK9fK8fpy7Ay57E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "543072965012-th8ol7v6dovpvhspshv34v50n4gkgtpm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
