@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.ddm.photolike2.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -29,6 +30,7 @@ public class NovoPostActivity extends AppCompatActivity {
     private FirebaseFirestore db;
     private FirebaseUser user;
     private FirebaseStorage storage;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     private ImageView imagem;
     private EditText legenda;
@@ -43,9 +45,14 @@ public class NovoPostActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
         storage = FirebaseStorage.getInstance();
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         imagem = findViewById(R.id.novo_post_imagem);
         legenda = findViewById(R.id.novo_post_legnda);
+
+        Bundle bundle = new Bundle();
+        bundle.putString("screen", "novo_post");
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
     }
 
     private void openGallery() {
@@ -77,6 +84,8 @@ public class NovoPostActivity extends AppCompatActivity {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 Log.d("NovoPostActivity", "Sucesso no upload da imagem!");
+
+                finish();
             }
         });
     }
@@ -103,6 +112,10 @@ public class NovoPostActivity extends AppCompatActivity {
 
                     String docRef = documentReference.getId();
                     uploadImage(docRef);
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString(FirebaseAnalytics.Param.ITEM_ID, docRef);
+                    mFirebaseAnalytics.logEvent("imagem_publicada", bundle);
                 }
             })
             .addOnFailureListener(new OnFailureListener() {

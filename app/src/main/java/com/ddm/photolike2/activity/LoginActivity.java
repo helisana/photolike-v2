@@ -11,6 +11,7 @@ import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract;
 import com.firebase.ui.auth.IdpResponse;
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -18,11 +19,18 @@ import java.util.Arrays;
 import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+        Bundle bundle = new Bundle();
+        bundle.putString("screen", "login");
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
     }
 
     private final ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(
@@ -40,6 +48,10 @@ public class LoginActivity extends AppCompatActivity {
         if (result.getResultCode() == RESULT_OK) {
             // Successfully signed in
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+            Bundle bundle = new Bundle();
+            bundle.putString(FirebaseAnalytics.Param.ITEM_ID, user.getUid());
+            mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.LOGIN, bundle);
 
             Intent i = new Intent(this, MainActivity.class);
             startActivity(i);
